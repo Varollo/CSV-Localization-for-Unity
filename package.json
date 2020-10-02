@@ -1,0 +1,17 @@
+{
+  "name": "com.gabrielcarollo.csv_localization_for_unity",
+  "version": "1.0.0",
+  "displayName": ".csv Localization for Unity",
+  "description": ".csv based localization system for Unity.",
+  "unity": "2019.1",
+  "keywords": [
+    "csv",
+    "localization"
+  ],
+  "author": {
+    "name": "Gabriel Carollo (Varollo)",
+    "email": "rimoldi98@gmail.com",
+    "url": "http://rimoldi98.github.io"
+  },
+  "type": "tool"
+}
