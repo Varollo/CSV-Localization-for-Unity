@@ -4,7 +4,7 @@ using TMPro;
 namespace Varollo.Localization
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class LanguageDependentTextTMPro : MonoBehaviour
+    public class LanguageDependentTextTMPro : MonoBehaviour, ILanguageDependent<string>
     {
         private TextMeshProUGUI _text;
 
@@ -12,7 +12,12 @@ namespace Varollo.Localization
         {
             _text = GetComponent<TextMeshProUGUI>();
 
-            _text.text = LanguageLocalizer.GetTranslation(_text.text);
+            _text.text = Translate(_text.text);
+        }
+
+        public string Translate(string original)
+        {
+            return LanguageLocalizer.GetTranslation(original);
         }
     }
 }
