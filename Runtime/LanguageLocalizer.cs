@@ -46,6 +46,11 @@ namespace Varollo.Localization
 
         public static string GetTranslation(string original)
         {
+			if(LocalizationDictionary == null)
+			{
+				Debug.LogWarning($"No localization file loaded. Call LoadLocalizationFile() first.");
+                return original;
+			}
             if(LocalizationDictionary.ContainsKey(original))
             {
                 return LocalizationDictionary[original][LanguageId];
