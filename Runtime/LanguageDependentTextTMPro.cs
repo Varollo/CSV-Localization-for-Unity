@@ -29,5 +29,10 @@ namespace Varollo.Localization
         {
             return LanguageLocalizer.GetTranslation(original);
         }
+
+        private void OnDestroy()
+        {
+            LanguageLocalizer.OnLanguageChanged -= UpdateTranslation;
+        }
     }
 }

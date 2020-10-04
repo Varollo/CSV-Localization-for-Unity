@@ -28,6 +28,11 @@ namespace Varollo.Localization
         public string Translate(string original)
         {
             return LanguageLocalizer.GetTranslation(original);
-        }        
+        }
+
+        private void OnDestroy()
+        {
+            LanguageLocalizer.OnLanguageChanged -= UpdateTranslation;
+        }
     }
 }
