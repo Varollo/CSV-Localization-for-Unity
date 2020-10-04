@@ -6,13 +6,23 @@ namespace Varollo.Localization
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LanguageDependentTextTMPro : MonoBehaviour, ILanguageDependent<string>
     {
+        public string OriginalText { get; private set; }
+
         private TextMeshProUGUI _text;
 
         private void Start()
         {
             _text = GetComponent<TextMeshProUGUI>();
+            OriginalText = _text.text;
 
-            _text.text = Translate(_text.text);
+            UpdateTranslation();
+
+            LanguageLocalizer.OnLanguageChanged += UpdateTranslation;
+        }
+
+        public void UpdateTranslation()
+        {
+            _text.text = Translate(OriginalText);
         }
 
         public string Translate(string original)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Varollo.Localization
@@ -8,6 +9,8 @@ namespace Varollo.Localization
         public static int LanguageId { get; private set; }
 
         public static int LoadedLanguages { get; private set; }
+
+        public static event Action OnLanguageChanged;
 
         private static Dictionary<string, string[]> LocalizationDictionary { get; set; }
 
@@ -37,6 +40,7 @@ namespace Varollo.Localization
             if(lang < LoadedLanguages && lang >= 0)
             {
                 LanguageId = lang;
+                OnLanguageChanged?.Invoke();
             }
             else
             {

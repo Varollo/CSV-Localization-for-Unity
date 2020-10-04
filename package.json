@@ -1,6 +1,6 @@
 {
   "name": "com.varollo.csv_localization_for_unity",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": ".csv Localization for Unity",
   "description": ".csv based localization system for Unity.",
   "unity": "2019.1",
