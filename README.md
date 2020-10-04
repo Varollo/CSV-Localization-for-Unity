@@ -1,5 +1,5 @@
 # Localization For Unity by Varollo
-**version 1.0.0**
+**version 1.0.2**
 
 This is a .csv based localization system for Unity.
 

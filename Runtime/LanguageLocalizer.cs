@@ -5,28 +5,56 @@ namespace Varollo.Localization
 {
     public static class LanguageLocalizer
     {
-        public static int languageId { get; private set; }
-        public static void SetLanguageId(int lang) => languageId = lang;
+        public static int LanguageId { get; private set; }
 
-        private static Dictionary<string, string[]> loadedLocalizationFile = new Dictionary<string, string[]>();
+        public static int LoadedLanguages { get; private set; }
+
+        private static Dictionary<string, string[]> LocalizationDictionary { get; set; }
 
         // Separetes the file by each row.
         // The row contains the translation to all languages supported.
         public static void LoadLocalizationFile(TextAsset localizationFile)
         {
+            LocalizationDictionary = new Dictionary<string, string[]>();
+
             string[] rows = localizationFile.text.Split('\n');
 
             foreach (string row in rows)
             {
                 string[] fields = row.Split(',');
 
-                loadedLocalizationFile.Add(fields[0], fields);
+                LoadedLanguages = fields.Length;
+
+                if(!LocalizationDictionary.ContainsKey(fields[0]))
+                {
+                    LocalizationDictionary.Add(fields[0], fields);
+                }
             }
         }
 
-        public static string GetTranslation(string englishText)
+        public static void SetLanguageId(int lang)
         {
-            return loadedLocalizationFile[englishText][languageId];
+            if(lang < LoadedLanguages && lang >= 0)
+            {
+                LanguageId = lang;
+            }
+            else
+            {
+                Debug.LogWarning($"Language ID of {lang} is not a valid ID.");
+            }
+        }
+
+        public static string GetTranslation(string original)
+        {
+            if(LocalizationDictionary.ContainsKey(original))
+            {
+                return LocalizationDictionary[original][LanguageId];
+            }
+            else
+            {
+                Debug.LogWarning($"Localization file does not contain a translation for {original}.");
+                return original;
+            }
         }
     }
 }
