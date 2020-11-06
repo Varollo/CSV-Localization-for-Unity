@@ -4,7 +4,7 @@
 This is a .csv based localization system for Unity.
 
 ## How to use it
-The .csv file must be organized in a specific way, with each frase separated by rows and languages by colums.
+The .csv file must be organized in a specific way, with each sentence separated by rows and languages by colums.
 ![](Example_images/example_table.jpg)
 
 Save the spreadsheet as .csv to use it in your game.
